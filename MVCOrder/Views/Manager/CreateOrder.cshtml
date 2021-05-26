@@ -1,0 +1,52 @@
+﻿@model MVCOrder.ViewModels.CreateOrderViewModel
+
+@{
+    ViewBag.Title = "Create New Order";
+}
+
+<div class="wrapper">
+    <section>
+        <form method="post">
+            <h2 class="form-signin-heading">Create New User</h2>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" readonly class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" readonly class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserEmail"></label>
+                <input asp-for="UserEmail" readonly class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceName"></label>
+                <input asp-for="ServiceName" readonly class="form-control" />
+                <span asp-validation-for="ServiceName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity"></label>
+                <input asp-for="Quantity" class="form-control" value="1" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntityPrice"></label>
+                <input asp-for="EntityPrice" readonly class="form-control" />
+                <span asp-validation-for="EntityPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderDateTime"></label>
+                <input asp-for="OrderDateTime" readonly class="form-control" />
+                <span asp-validation-for="OrderDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create Order</button>
+            </div>
+        </form>
+    </section>
+</div>

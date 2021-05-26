@@ -1,0 +1,39 @@
+﻿@model MVCOrder.Models.Limit
+
+@{
+    ViewBag.Title = "Limit";
+}
+
+<h2 class="text-danger">@ViewBag.ErrorMessage</h2>
+<h1>Limit</h1>
+
+@if (Model != null)
+{
+    <div class="card mb-3">
+        <div class="card-header">
+            Start Date: @Model.StartDate<br />
+            End Date: @Model.EndDate<br />
+            Quantity: @Model.Quantity
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-danger" asp-action="DeleteLimit" asp-controller="Manager" asp-route-id="@Model.Id">Delete</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No limit created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create a limit
+            </h5>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="Manager" asp-action="CreateLimit">
+                Create Limit
+            </a>
+        </div>
+    </div>
+}

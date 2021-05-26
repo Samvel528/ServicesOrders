@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MVCOrder.Models.Order>
+
+@{
+    ViewBag.Title = "All Orders";
+}
+
+<h1>All Orders</h1>
+
+@if (Model.Any())
+{
+    foreach (var order in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Order Id: @order.Id<br />
+                User Name: @order.User.FirstName @order.User.LastName<br />
+                User Email: @order.User.Email<br />
+                Service Name: @order.Service.Name<br />
+                Service Entity Price: @order.Service.Price<br />
+                Order Total Amount: @order.TotalAmount<br />
+                Order Quantity: @order.Quantity<br />
+                Order Date Time: @order.OrderDateTime<br />
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Order Id: @order.Id | Service Name: @order.Service.Name</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" asp-action="ExportToCSV" asp-controller="Administration" asp-route-id="@order.Id">Export to CSV</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No orders created yet
+        </div>
+    </div>
+}

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MVCOrder.Models.Order>
+
+@{
+    ViewBag.Title = "All Orders";
+}
+
+<h1>All Orders</h1>
+
+@if (Model.Any())
+{
+    <a class="btn btn-primary mb-3" style="width:auto" asp-action="ListUsers" asp-controller="Manager">Create new order</a>
+    foreach (var order in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Order Id: @order.Id<br />
+                User Name: @order.User.FirstName @order.User.LastName<br />
+                User Email: @order.User.Email<br />
+                Service Name: @order.Service.Name<br />
+                Service Entity Price: @order.Service.Price<br />
+                Order Total Amount: @order.TotalAmount<br />
+                Order Quantity: @order.Quantity<br />
+                Order Date Time: @order.OrderDateTime<br />
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Order Id: @order.Id | Service Name: @order.Service.Name</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-danger" asp-action="DeleteOrder" asp-controller="Manager" asp-route-id="@order.Id">Delete</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No orders created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create a order
+            </h5>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="Manager" asp-action="ListUsers">
+                Create Order
+            </a>
+        </div>
+    </div>
+}

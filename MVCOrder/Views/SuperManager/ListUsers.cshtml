@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MVCOrder.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "All Users";
+}
+
+<h1>All Users</h1>
+
+@if (Model.Any())
+{
+    <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateUser" asp-controller="SuperManager">Create new user</a>
+    foreach (var user in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                User Id: @user.Id<br />
+                User Email: @user.Email
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@user.UserName</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-danger" asp-action="DeleteUser" asp-controller="SuperManager" asp-route-id="@user.Id">Delete</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No users created yet
+        </div>
+    </div>
+}

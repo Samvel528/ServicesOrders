@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MVCOrder.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Select User";
+}
+
+<h1>Select User For Register Order</h1>
+
+@if (Model.Any())
+{
+    foreach (var user in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                User Name: @user.FirstName @user.LastName<br />
+                User Email: @user.Email
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@user.UserName</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" asp-action="SelectService" asp-controller="Manager" asp-route-id="@user.Id">Select</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No users created yet
+        </div>
+    </div>
+}

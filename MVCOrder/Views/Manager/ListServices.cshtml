@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MVCOrder.Models.Service>
+
+@{
+    ViewBag.Title = "All Services";
+}
+
+<h1>All Services</h1>
+
+@if (Model.Any())
+{
+    <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateService" asp-controller="Manager">Create new service</a>
+    foreach (var service in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Service Id: @service.Id<br />
+                Service Name: @service.Name<br />
+                Service Price: @service.Price<br />
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@service.Name</h5>
+            </div>
+            <div class="card-footer">
+                @if (service.Orders.Count != 0)
+                {
+                    <div>
+                        There are orders on this service, you can not delete or change it
+                    </div>
+                }
+                else
+                {
+                    <a class="btn btn-primary" asp-action="EditService" asp-controller="Manager" asp-route-id="@service.Id">Edit</a>
+                    <a class="btn btn-danger" asp-action="DeleteService" asp-controller="Manager" asp-route-id="@service.Id">Delete</a>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No services created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create a service
+            </h5>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="Manager" asp-action="CreateService">
+                Create Service
+            </a>
+        </div>
+    </div>
+}

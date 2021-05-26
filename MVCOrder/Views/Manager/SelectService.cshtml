@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MVCOrder.Models.Service>
+
+
+@{
+    ViewBag.Title = "Select Services";
+}
+
+<h1>Select Service For Register Order</h1>
+
+@if (Model.Any())
+{
+    foreach (var service in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Service Id: @service.Id<br />
+                Service Name: @service.Name
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" asp-action="CreateOrder" asp-controller="Manager" asp-route-id="@service.Id">Select</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No users created yet
+        </div>
+    </div>
+}
