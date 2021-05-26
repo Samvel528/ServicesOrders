@@ -1,2 +1,2 @@
 # ServicesOrders
-Add your Connection strings to the Appsettings and Models.aspnetMVCOrderContext files.
+Add your Connection strings to the appsettings.json and Models.aspnetMVCOrderContext files.
